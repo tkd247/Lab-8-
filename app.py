@@ -38,9 +38,9 @@ sizearea = st.number_input(
 if st.button("Predict"):
 
     input_df = pd.DataFrame({
-        "CALC_ACRES":[acres],
-        "YEARBUILT":[yearbuilt],
-        "SIZEAREA":[sizearea]
+        "CALC_ACRES": [acres],
+        "YEARBUILT": [yearbuilt],
+        "SIZEAREA": [sizearea]
     })
 
     input_scaled = scaler.transform(input_df)
