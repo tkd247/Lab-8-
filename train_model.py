@@ -69,7 +69,4 @@ model.save("artifacts/housing_model.h5")
 joblib.dump(scaler, "artifacts/scaler.pkl")
 joblib.dump(features, "artifacts/feature_names.pkl")
 
-# Prediction
-if st.button("Predict Appraised Value"):
-    prediction = model.predict(input_data)[0]
-    st.success(f"Estimated Appraised Value: ${prediction:,.2f}")
+
