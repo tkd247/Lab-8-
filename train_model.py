@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 # Load data
-df = pd.read_csv("data/Housing_Hamilton_Compressed.csv.gz")
+df = pd.read_csv("Housing_Hamilton_Compressed.csv.gz")
 
 # Select features and target
 features = ["CALC_ACRES", "YEARBUILT", "SIZEAREA"]
