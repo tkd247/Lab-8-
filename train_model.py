@@ -69,4 +69,4 @@ model.save("artifacts/housing_model.h5")
 joblib.dump(scaler, "artifacts/scaler.pkl")
 joblib.dump(features, "artifacts/feature_names.pkl")
 
-
+print(df.columns.tolist())
