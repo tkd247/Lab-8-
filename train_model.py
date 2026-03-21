@@ -10,6 +10,9 @@ from sklearn.preprocessing import StandardScaler
 # Load data
 df = pd.read_csv("Housing_Hamilton_Compressed.csv.gz")
 
+# 👉 ADD THIS LINE RIGHT HERE
+print(df.columns.tolist())
+
 # Select features and target
 features = ["CALC_ACRES", "YEARBUILT", "SIZEAREA"]
 target = "APPRAISED_VALUE"
