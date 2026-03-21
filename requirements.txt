@@ -6,4 +6,3 @@ scikit-learn
 streamlit
 joblib
 matplotlib
-python-3.9
