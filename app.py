@@ -45,6 +45,6 @@ if st.button("Predict"):
 
     input_scaled = scaler.transform(input_df)
 
-    prediction = model.predict(input_scaled)[0][0]
+    prediction = float(model.predict(input_scaled)[0][0])
 
     st.success(f"Estimated appraised value: ${prediction:,.0f}")
