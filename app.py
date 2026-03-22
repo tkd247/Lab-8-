@@ -12,6 +12,7 @@ st.title("Hamilton County Housing Value Predictor")
 st.caption("Educational use only. Predictions are approximate.")
 
 # Inputs
+# Inputs
 acres = st.number_input(
     "Land area (acres)",
     min_value=0.01,
@@ -20,27 +21,27 @@ acres = st.number_input(
     step=0.01
 )
 
-yearbuilt = st.number_input(
-    "Year built",
-    min_value=1900,
-    max_value=2026,
-    value=2000
+land_value = st.number_input(
+    "Land value ($)",
+    min_value=0,
+    max_value=1000000,
+    value=50000
 )
 
-sizearea = st.number_input(
-    "Building area (sq ft)",
-    min_value=300,
-    max_value=10000,
-    value=1800,
-    step=50
+build_value = st.number_input(
+    "Building value ($)",
+    min_value=0,
+    max_value=1000000,
+    value=150000
 )
 
+# Prediction
 if st.button("Predict"):
 
     input_df = pd.DataFrame({
         "CALC_ACRES": [acres],
-        "YEARBUILT": [yearbuilt],
-        "SIZEAREA": [sizearea]
+        "LAND_VALUE": [land_value],
+        "BUILD_VALUE": [build_value]
     })
 
     input_scaled = scaler.transform(input_df)
