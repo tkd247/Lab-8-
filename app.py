@@ -1,11 +1,12 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import tensorflow as tf
 import joblib
 
-# Load artifacts
-model = joblib.load("artifacts/model.pkl")
+model = tf.keras.models.load_model("artifacts/housing_model.h5")
 scaler = joblib.load("artifacts/scaler.pkl")
+# Load artifacts
 
 st.title("Hamilton County Housing Value Predictor")
 st.caption("Educational use only. Predictions are approximate.")
