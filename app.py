@@ -1,17 +1,15 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import tensorflow as tf
 import joblib
 
 # Load artifacts
-model = tf.keras.models.load_model("artifacts/housing_model.h5", compile=False)
+model = joblib.load("artifacts/model.pkl")
 scaler = joblib.load("artifacts/scaler.pkl")
 
 st.title("Hamilton County Housing Value Predictor")
 st.caption("Educational use only. Predictions are approximate.")
 
-# Inputs
 # Inputs
 acres = st.number_input(
     "Land area (acres)",
@@ -46,6 +44,6 @@ if st.button("Predict"):
 
     input_scaled = scaler.transform(input_df)
 
-    prediction = float(model.predict(input_scaled)[0][0])
+    prediction = float(model.predict(input_scaled)[0])
 
     st.success(f"Estimated appraised value: ${prediction:,.0f}")
