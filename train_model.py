@@ -38,18 +38,10 @@ X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
 # Build neural network
-model = tf.keras.Sequential([
-    tf.keras.layers.Dense(128, activation="relu", input_shape=(X_train_scaled.shape[1],)),
-    tf.keras.layers.Dense(64, activation="relu"),
-    tf.keras.layers.Dense(32, activation="relu"),
-    tf.keras.layers.Dense(1)
-])
-
-model.compile(
-    optimizer="adam",
-    loss="mse",
-    metrics=["mae"]
-)
+from sklearn.linear_model import LinearRegression
+import joblib
+model = LinearRegression()
+model.fit(X_train, y_train)
 
 # Train model
 history = model.fit(
@@ -68,7 +60,7 @@ print("Test MAE:", mae)
 # Save artifacts
 os.makedirs("artifacts", exist_ok=True)
 
-model.save("artifacts/housing_model.h5")
+joblib.dump(model, "artifacts/model.pkl")
 joblib.dump(scaler, "artifacts/scaler.pkl")
 joblib.dump(features, "artifacts/feature_names.pkl")
 
