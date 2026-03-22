@@ -3,44 +3,34 @@ import pandas as pd
 import numpy as np
 import tensorflow as tf
 import joblib
+import os
 
-model = tf.keras.models.load_model("artifacts/housing_model.h5")
-scaler = joblib.load("artifacts/scaler.pkl")
-# Load artifacts
+BASE_DIR = os.path.dirname(__file__)
+
+model = tf.keras.models.load_model(
+    os.path.join(BASE_DIR, "artifacts/housing_model.h5")
+)
+
+scaler = joblib.load(
+    os.path.join(BASE_DIR, "artifacts/scaler.pkl")
+)
 
 st.title("Hamilton County Housing Value Predictor")
 st.caption("Educational use only. Predictions are approximate.")
 
 # Inputs
-acres = st.number_input(
-    "Land area (acres)",
-    min_value=0.01,
-    max_value=20.0,
-    value=0.25,
-    step=0.01
-)
+acres = st.number_input("Land area (acres)", 0.01, 20.0, 0.25)
 
-land_value = st.number_input(
-    "Land value ($)",
-    min_value=0,
-    max_value=1000000,
-    value=50000
-)
+yearbuilt = st.number_input("Year built", 1900, 2026, 2000)
 
-build_value = st.number_input(
-    "Building value ($)",
-    min_value=0,
-    max_value=1000000,
-    value=150000
-)
+sizearea = st.number_input("Building area (sq ft)", 300, 10000, 1800)
 
 # Prediction
 if st.button("Predict"):
-
     input_df = pd.DataFrame({
         "CALC_ACRES": [acres],
-        "LAND_VALUE": [land_value],
-        "BUILD_VALUE": [build_value]
+        "YEARBUILT": [yearbuilt],
+        "SIZEAREA": [sizearea]
     })
 
     input_scaled = scaler.transform(input_df)
