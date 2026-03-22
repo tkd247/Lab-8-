@@ -5,7 +5,7 @@ import tensorflow as tf
 import joblib
 
 # Load artifacts
-model = tf.keras.models.load_model("artifacts/housing_model.h5")
+model = tf.keras.models.load_model("artifacts/housing_model.h5", compile=False)
 scaler = joblib.load("artifacts/scaler.pkl")
 
 st.title("Hamilton County Housing Value Predictor")
