@@ -14,7 +14,7 @@ df = pd.read_csv("Housing_Hamilton_Compressed.csv.gz")
 print(df.columns.tolist())
 
 # Select features and target
-features = ["CALC_ACRES", "YEARBUILT", "SIZEAREA"]
+features = ["CALC_ACRES", "LAND_VALUE", "BUILD_VALUE"]
 target = "APPRAISED_VALUE"
 
 df = df[features + [target]].copy()
